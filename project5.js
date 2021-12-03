@@ -58,39 +58,6 @@ del.addEventListener("click", (eo) => {
   }
 });
 
-const numbers = document.querySelector(".numbers");
-let newNumber;
-
-numbers.addEventListener("click", (eo) => {
-  if (!result.classList.contains("dn")) {
-    console.log("ok");
-    if (
-      eo.target.dataset.nmb == "0" ||
-      eo.target.dataset.nmb == "1" ||
-      eo.target.dataset.nmb == "2" ||
-      eo.target.dataset.nmb == "3" ||
-      eo.target.dataset.nmb == "4" ||
-      eo.target.dataset.nmb == "5" ||
-      eo.target.dataset.nmb == "6" ||
-      eo.target.dataset.nmb == "7" ||
-      eo.target.dataset.nmb == "8" ||
-      eo.target.dataset.nmb == "9"
-    ) {
-      create.innerText = "";
-      result.innerText = "";
-      col.classList.remove("dn");
-      result.classList.add("dn");
-    }
-  }
-  if (!parScreen.classList.contains("opc")) {
-    if (eo.target.dataset.nmb == undefined) {
-    } else {
-      audio.play();
-      create.append(eo.target.dataset.nmb);
-      result.append(eo.target.dataset.nmb);
-    }
-  }
-});
 const resultBtn = document.getElementById("resultBtn");
 
 resultBtn.addEventListener("click", (eo) => {
@@ -102,3 +69,68 @@ resultBtn.addEventListener("click", (eo) => {
     audio.play();
   }
 });
+
+const numbers = document.querySelector(".numbers");
+let newNumber;
+
+numbers.addEventListener("click", (eo) => {
+  if (!result.classList.contains("dn")) {
+    // console.log("ok");
+    if (
+      eo.target.dataset.nmb == "0" ||
+      eo.target.dataset.nmb == "1" ||
+      eo.target.dataset.nmb == "2" ||
+      eo.target.dataset.nmb == "3" ||
+      eo.target.dataset.nmb == "4" ||
+      eo.target.dataset.nmb == "5" ||
+      eo.target.dataset.nmb == "6" ||
+      eo.target.dataset.nmb == "7" ||
+      eo.target.dataset.nmb == "8" ||
+      eo.target.dataset.nmb == "9" ||
+      eo.target.dataset.nmb == "(" ||
+      eo.target.dataset.nmb == ")"
+      
+    ) {
+      create.innerText = "";
+      result.innerText = "";
+      col.classList.remove("dn");
+      result.classList.add("dn");
+    } else if (eo.target.getAttribute("data-symbole")) {
+      console.log("object");
+      create.innerText = eval(result.innerText);
+      result.classList.add("dn");
+      col.classList.remove("dn")
+    }
+  }
+  if (!parScreen.classList.contains("opc")) {
+    if (eo.target.dataset.nmb == undefined) {
+    } else {
+      if (eo.target.getAttribute("data-symbole")) {
+        // console.log(create.lastChild);
+        // if (eo.target = create.lastChild) {
+        
+        // console.log("ok");
+        // } else{
+        //   console.log("no");
+          
+        // }
+        create.append(eo.target.dataset.symbole);
+        
+        // console.log(create.lastChild);
+      } else {
+        create.append(eo.target.dataset.nmb);
+       
+      }
+      result.append(eo.target.dataset.nmb);
+      audio.play();
+      
+    
+    }
+  }
+  // if (result.classList.contains("dn")) {
+  // } else {
+  //   console.log("no");
+    
+  // }
+});
+

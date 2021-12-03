@@ -8,6 +8,9 @@
   font-family: Arial, Helvetica, sans-serif;
   user-select: none;
 }
+body{
+  opacity: 0.9;
+}
 .opc {
   opacity: 0;
 }
